@@ -1,6 +1,6 @@
 on:
   push:
-   barnches:
+   branches:
      - dev
   pull_request:
     branches:

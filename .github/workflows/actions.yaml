@@ -1,0 +1,41 @@
+# Terraform GitHub Action
+# This action runs Terraform commands in a GitHub Actions workflow.
+# It is designed to be used in a CI/CD pipeline to automate the deployment of infrastructure as code.
+
+on push:
+  branches:
+    - dev
+  paths:
+    - terraform/**
+  
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.0.0
+
+      - name: run test
+        run: |
+          cd terraform
+
+      - name: Initialize Terraform
+        run: terraform init
+
+      - name: Validate Terraform configuration
+        run: terraform validate
+
+      - name: Plan Terraform changes
+        run: terraform plan
+
+      - name: Apply Terraform changes
+        run: terraform apply -auto-approve
+
+        

@@ -1,6 +1,8 @@
 # Terraform GitHub Action
 # This action runs Terraform commands in a GitHub Actions workflow.
 # It is designed to be used in a CI/CD pipeline to automate the deployment of infrastructure as code.
+# The action will run on every push to the dev branch and will only run if there are changes in the terraform directory.
+# The action will initialize Terraform, validate the configuration, plan the changes, and apply them automatically.
 
 on push:
   branches:
